@@ -1,0 +1,10 @@
+.carousel {
+  width: 60%;
+  height: 700px;
+  background-color: lightgreen;
+}
+
+.carouselInner {
+  height: 100%;
+  width: 100%;
+}
