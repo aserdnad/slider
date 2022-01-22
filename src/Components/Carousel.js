@@ -25,14 +25,14 @@ const Carousel = () => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      if (count % 2 == 0) {
+      if (count % 5 === 0) {
         clickRight();
       }
       setCount((prevCount) => prevCount + 1);
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [clickRight]);
 
   return (
     <div className="carousel">
@@ -46,7 +46,6 @@ const Carousel = () => {
         <div className="center">
           <h1>{images[indice].title}</h1>
           <p>{images[indice].subtitle}</p>
-          <h2>{count}</h2>
         </div>
         <div className="right" onClick={clickRight}>
           <ArrowFowardIosIcon />
