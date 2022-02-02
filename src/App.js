@@ -32,11 +32,9 @@ export default function App() {
           cambios(e);
         }}
       />
-      {valores
-        .filter((y) => (buscar === "" ? y : y.nombre.includes(buscar)))
-        .map((x) => (
-          <Tiendas key={x.id} tienda={x} />
-        ))}
+      {valores.map((x) => (
+        <Tiendas key={x.id} tienda={x} />
+      ))}
     </div>
   );
 }

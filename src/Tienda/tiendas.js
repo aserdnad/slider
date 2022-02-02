@@ -12,7 +12,9 @@ export const tiendasDisponibles = createSlice({
   initialState,
   reducers: {
     filtrarBuscador: (state, filtro) => {
-      state.value = initialState["value"].filter((x) => x === filtro.payload);
+      state.value = state.value.filter((x) =>
+        x.nombre.includes(filtro.payload)
+      );
     },
     decrement: (state) => {
       state.value -= 1;
