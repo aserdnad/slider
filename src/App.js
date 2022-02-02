@@ -3,14 +3,24 @@ import Tiendas from "./Components/Tiendas";
 import Carousel from "./Components/Carousel";
 import "./styles.css";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { filtrarBuscador } from "./Tienda/tiendas";
 
 export default function App() {
-  const tienda = [
-    { id: "1", nombre: "culo", etiqueta: "arte" },
-    { id: "2", nombre: "mano", etiqueta: "comida" }
-  ];
+  // const tienda = [
+  //   { id: "1", nombre: "culo", etiqueta: "arte" },
+  //   { id: "2", nombre: "mano", etiqueta: "comida" }
+  // ];
 
   const [buscar, setBuscar] = useState("");
+
+  const valores = useSelector((state) => state.tiendasD.value);
+  const dispatch = useDispatch();
+
+  const cambios = (e) => {
+    setBuscar(e.target.value);
+    dispatch(filtrarBuscador(buscar));
+  };
 
   return (
     <div className="App">
@@ -19,10 +29,10 @@ export default function App() {
       <input
         type="text"
         onChange={(e) => {
-          setBuscar(e.target.value);
+          cambios(e);
         }}
       />
-      {tienda
+      {valores
         .filter((y) => (buscar === "" ? y : y.nombre.includes(buscar)))
         .map((x) => (
           <Tiendas key={x.id} tienda={x} />
